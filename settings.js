@@ -15,7 +15,7 @@ if (fs.existsSync('.env')) require('dotenv').config({ path: __dirname+'/.env' })
 
 
 //=================================================//
-global.SESSION_ID = process.env.SESSION_ID || '' 
+global.SESSION_ID = process.env.SESSION_ID || 'XPLOADER~WyJFWAIY#j7I0b8DwtaLcmLVjvTrtCzvn-2DB2X6tzNGcAOAFCng' 
 //Enter your Xploader session id here; must start with XPLOADER~
 
 //=================================================//
@@ -23,11 +23,11 @@ global.botname = process.env.BOT_NAME || '𝐗𝐩𝐥𝐨𝐚𝐝𝐞𝐫𝐁�
 //Your desired bot name
 
 //=================================================//
-global.ownernumber = process.env.OWNER_NUMBER || '254754783972' 
+global.ownernumber = process.env.OWNER_NUMBER || '263771195152' 
 //Type your number here
 
 //=================================================//
-global.ownername = process.env.OWNER_NAME || 'Tylor' 
+global.ownername = process.env.OWNER_NAME || '✨💫 Angel di Maria 🔥🔥🔥' 
 //Type your name here
 
 //=================================================//
@@ -59,10 +59,10 @@ global.mode = process.env.MODE || 'public';
 //=================================================//
 global.hituet = 0 
 //=================================================//
-global.autoviewstatus = process.env.AUTO_STATUS_VIEW || 'false'
+global.autoviewstatus = process.env.AUTO_STATUS_VIEW || 'true'
 
 //=================================================//
-global.autostatusreact = process.env.AUTO_STATUS_REACT || 'false'
+global.autostatusreact = process.env.AUTO_STATUS_REACT || 'true'
 
 //=================================================//
 global.anticall = process.env.ANTI_CALL || 'false'
