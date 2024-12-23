@@ -1,25 +1,43 @@
-FROM node:lts
+name: Node.js CI
 
-# Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg imagemagick webp && apt-get clean
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 */6 * * *'  # Relance toutes les 6 heures
 
-# Set working directory
-WORKDIR /app
+jobs:
+  build:
 
-# Copy package files
-COPY package*.json ./
+    runs-on: ubuntu-latest
 
-# Install dependencies
-RUN npm install && npm cache clean --force
+    strategy:
+      matrix:
+        node-version: [20.x]
 
-# Copy application code
-COPY . .
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-# Expose port
-EXPOSE 3000
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
 
-# Set environment
-ENV NODE_ENV production
+    - name: Install dependencies
+      run: npm install
 
-# Run command
-CMD ["npm", "run", "start"]
+    - name: Install FFmpeg
+      run: sudo apt-get install -y ffmpeg
+
+    - name: Start application with timeout
+      run: |
+        timeout 21590s npm start  # Limite l'exécution à 24h 59m 50s
+
+    - name: Save state (Optional)
+      run: |
+        ./save_state.sh
